@@ -1,4 +1,4 @@
 import { createContext } from "react";
 
-export const AppContext = createContext("");
+export const FetchedProductsContext = createContext([]);
 export const ProductsInCartContext = createContext([]);

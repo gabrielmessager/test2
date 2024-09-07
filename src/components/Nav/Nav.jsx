@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import Navbar from "./ui/Navbar";
-import Menu from "./ui/Menu";
-import Cart from "./ui/Cart";
+import { useState } from "react";
+import { Navbar } from "../Navbar";
+import { Menu } from "../Menu";
+import { Cart } from "../Cart";
 
-const Nav = ({ setProductsInCart }) => {
+export const Nav = ({ setProductsInCart }) => {
   const [cartOpen, setCartOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -19,5 +19,3 @@ const Nav = ({ setProductsInCart }) => {
     </>
   );
 };
-
-export default Nav;

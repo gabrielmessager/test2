@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import NavLogo from "../../assets/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faCartShopping } from "@fortawesome/free-solid-svg-icons";
@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 import { ProductsInCartContext } from "../../context/AppContext";
 
-const Navbar = ({ setCartOpen, setMenuOpen }) => {
+export const Navbar = ({ setCartOpen, setMenuOpen }) => {
   const { productsInCart } = useContext(ProductsInCartContext);
   const itemCount = productsInCart.length || 0;
 
@@ -35,5 +35,3 @@ const Navbar = ({ setCartOpen, setMenuOpen }) => {
     </nav>
   );
 };
-
-export default Navbar;

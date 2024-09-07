@@ -1,8 +1,7 @@
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-// import ProductImg from "../../assets/product-img.jpg";
-const BASE_URL = "https://ecommerce-samurai.up.railway.app/";
+
+const IMAGE_BASE_URL = "https://ecommerce-samurai.up.railway.app/";
 
 export const CartItem = ({
   imagePath,
@@ -17,7 +16,7 @@ export const CartItem = ({
     <div className="cart__item">
       <div className="cart__item__left">
         <img
-          src={`${BASE_URL}/${imagePath}`}
+          src={`${IMAGE_BASE_URL}/${imagePath}`}
           alt=""
           className="cart__item__img"
         />

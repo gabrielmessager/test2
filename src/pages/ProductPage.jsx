@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AppContext } from "../context/AppContext";
-import Product from "../components/ui/Product";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import ProductPageSkeleton from "../components/ProductPageSkeleton";
-import ProductSkeleton from "../components/ui/ProductSkeleton";
+import { FetchedProductsContext } from "../context/AppContext";
+import { Product } from "../components/Product";
+import { ProductPageSkeleton } from "../components/ProductPageSkeleton";
+import { ProductSkeleton } from "../components/ProductSkeleton";
 
 const ProductPage = ({ setProductsInCart }) => {
-  const { products } = useContext(AppContext);
+  const { products } = useContext(FetchedProductsContext);
   const { id } = useParams();
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -156,7 +156,7 @@ const ProductPage = ({ setProductsInCart }) => {
           <div className="recommendations">
             <h2 className="products__title">Trending Now</h2>
             <div className="products__list">
-              {/* {products.length > 0 && loading !== true
+              {products.length > 0 && selectedProduct
                 ? products
                     .filter((product) => product.id !== selectedProduct.id)
                     .slice(0, 4)
@@ -165,14 +165,7 @@ const ProductPage = ({ setProductsInCart }) => {
                     ))
                 : new Array(4)
                     .fill(0)
-                    .map((_, index) => <ProductSkeleton key={index} />)} */}
-              {products?.length > 0 &&
-                products
-                  .filter((product) => product?.id !== selectedProduct?.id)
-                  .slice(0, 4)
-                  .map((product) => (
-                    <Product product={product} key={product.id} />
-                  ))}
+                    .map((_, index) => <ProductSkeleton key={index} />)}
             </div>
           </div>
         </div>

@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
-import Nav from "./components/Nav";
-import { AppContext, ProductsInCartContext } from "./context/AppContext";
-import axios from "axios";
-import Newsletter from "./components/Newsletter";
-import Footer from "./components/Footer";
+import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import axios from "axios";
+import {
+  FetchedProductsContext,
+  ProductsInCartContext,
+} from "./context/AppContext";
+import { Nav } from "./components/Nav";
+import { Newsletter } from "./components/Newsletter";
+import { Footer } from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductPage from "./pages/ProductPage";
@@ -28,7 +31,7 @@ function App() {
   }, []);
 
   return (
-    <AppContext.Provider value={{ products }}>
+    <FetchedProductsContext.Provider value={{ products }}>
       <ProductsInCartContext.Provider value={{ productsInCart }}>
         <Router>
           <Nav setProductsInCart={setProductsInCart} />
@@ -42,12 +45,9 @@ function App() {
           </Routes>
           <Newsletter />
           <Footer />
-          {/* <Nav />
-    <Newsletter />
-    <Footer /> */}
         </Router>
       </ProductsInCartContext.Provider>
-    </AppContext.Provider>
+    </FetchedProductsContext.Provider>
   );
 }
 

@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { ProductsInCartContext } from "../../context/AppContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { CartItem } from "./CartItem";
+import { CartItem } from "./components/CartItem";
 
-const Cart = ({ cartOpen, setCartOpen, setProductsInCart }) => {
+export const Cart = ({ cartOpen, setCartOpen, setProductsInCart }) => {
   const { productsInCart } = useContext(ProductsInCartContext);
 
   function getSubtotal() {
@@ -75,5 +75,3 @@ const Cart = ({ cartOpen, setCartOpen, setProductsInCart }) => {
     </div>
   );
 };
-
-export default Cart;
