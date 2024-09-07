@@ -528,7 +528,7 @@ button {
 
 /* Banner 2 */
 
-.banner-2 {
+.image-first {
   flex-direction: row-reverse;
 }
 
@@ -570,7 +570,6 @@ button {
   padding: 8px;
   outline: none;
   border: none;
-  cursor: not-allowed;
 }
 
 /* Footer */
@@ -598,7 +597,6 @@ footer {
 .footer__link {
   color: white;
   font-size: 18px;
-  cursor: not-allowed;
 }
 
 /* 
@@ -854,6 +852,7 @@ SELECTED PRODUCT PAGE
   font-size: 20px;
   text-transform: uppercase;
   transition: 200ms;
+  padding: 0 14px;
 }
 
 .selected-product__add:hover {
