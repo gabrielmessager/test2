@@ -6,29 +6,52 @@ import axios from "axios";
 import ProductPageSkeleton from "../components/ProductPageSkeleton";
 import ProductSkeleton from "../components/ui/ProductSkeleton";
 
-const ProductPage = () => {
+const ProductPage = ({ setProductsInCart }) => {
   const { products } = useContext(AppContext);
   const { id } = useParams();
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
+  function updateProductsInCart(productsInCart) {
+    let productAlreadyInCart = false;
+    let products;
+
+    if (productsInCart.length > 0) {
+      products = productsInCart.map((productInCart) => {
+        // update product quantity if already in cart
+        if (productInCart.product.id === selectedProduct.id) {
+          productAlreadyInCart = true;
+          return { product: productInCart, quantity };
+        }
+        return productInCart;
+      });
+
+      if (!productAlreadyInCart) {
+        products.push({ product: selectedProduct, quantity });
+      }
+
+      return products;
+    }
+
+    return [{ product: selectedProduct, quantity }];
+  }
+
   async function fetchProduct() {
     const { data } = await axios.get(
       `https://ecommerce-samurai.up.railway.app/product/${id}`
     );
 
-    // 2:13:14
     const productData = data.data;
 
     setSelectedProduct(productData);
-
     setSelectedImage(productData.images[0]);
+    setQuantity(1);
   }
 
   useEffect(() => {
     fetchProduct();
-  }, []);
+  }, [id]);
 
   return (
     <main className="products__main">
@@ -99,7 +122,14 @@ const ProductPage = () => {
                     <span className="selected-product__quantity__span selected-product__quantity__span-2">
                       ${products[0]?.price}
                     </span>
-                    <button className="selected-product__add">
+                    <button
+                      onClick={() => {
+                        setProductsInCart((productsInCart = []) =>
+                          updateProductsInCart(productsInCart)
+                        );
+                      }}
+                      className="selected-product__add"
+                    >
                       Add To Cart
                     </button>
                   </div>
@@ -136,9 +166,9 @@ const ProductPage = () => {
                 : new Array(4)
                     .fill(0)
                     .map((_, index) => <ProductSkeleton key={index} />)} */}
-              {products.length > 0 &&
+              {products?.length > 0 &&
                 products
-                  .filter((product) => product.id !== selectedProduct.id)
+                  .filter((product) => product?.id !== selectedProduct?.id)
                   .slice(0, 4)
                   .map((product) => (
                     <Product product={product} key={product.id} />
