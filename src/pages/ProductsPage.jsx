@@ -10,6 +10,11 @@ const ProductsPage = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
+    // ensure User sees the top of the products page when navigating to it
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const filterProductsList = products.filter(
       (product) => product.category === filter
     );

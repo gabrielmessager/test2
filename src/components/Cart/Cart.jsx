@@ -69,7 +69,7 @@ export const Cart = ({ cartOpen, setCartOpen, setProductsInCart }) => {
             <h4 className="cart__footer__title">Subtotal</h4>
             <span className="cart__footer__subtotal">${getSubtotal()}</span>
           </div>
-          <button className="cart__footer__button">Go to checkout</button>
+          {/* <button className="cart__footer__button">Go to checkout</button> */}
         </div>
       </nav>
     </div>

@@ -8,10 +8,10 @@ export const Banner = ({
   showImageFirst,
 }) => {
   return (
-    <section id="banner-2">
+    <section>
       <div className="container">
         <div className="row">
-          <div className={`banner ${showImageFirst && "banner-2"}`}>
+          <div className={`banner ${showImageFirst && "image-first"}`}>
             <div className="banner__text">
               <h2 className="banner__text__title">{title}</h2>
               <p className="banner__text__paragraph">{description}</p>

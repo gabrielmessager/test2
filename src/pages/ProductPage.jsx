@@ -13,6 +13,11 @@ const ProductPage = ({ setProductsInCart }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
+  useEffect(() => {
+    // ensure User sees the top of the product page when navigating to it
+    window.scrollTo(0, 0);
+  }, []);
+
   function updateProductsInCart(productsInCart) {
     let productAlreadyInCart = false;
     let products;

@@ -528,7 +528,7 @@ button {
 
 /* Banner 2 */
 
-.banner-2 {
+.image-first {
   flex-direction: row-reverse;
 }
 
@@ -570,7 +570,6 @@ button {
   padding: 8px;
   outline: none;
   border: none;
-  cursor: not-allowed;
 }
 
 /* Footer */
