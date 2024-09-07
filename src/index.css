@@ -598,7 +598,6 @@ footer {
 .footer__link {
   color: white;
   font-size: 18px;
-  cursor: not-allowed;
 }
 
 /* 
@@ -854,6 +853,7 @@ SELECTED PRODUCT PAGE
   font-size: 20px;
   text-transform: uppercase;
   transition: 200ms;
+  padding: 0 14px;
 }
 
 .selected-product__add:hover {
