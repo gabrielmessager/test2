@@ -10,7 +10,9 @@ export const CartItem = ({
   price,
   quantity,
   removeProduct,
+  updateProductQuantity,
 }) => {
+  updateProductQuantity;
   return (
     <div className="cart__item">
       <div className="cart__item__left">
@@ -24,11 +26,31 @@ export const CartItem = ({
         <h4 className="cart__item__title">{title}</h4>
         <span className="cart__item__price">${price}</span>
         <div className="cart__item__quantity">
-          <button className="cart__item__quantity__btn">-</button>
+          <button
+            className="cart__item__quantity__btn"
+            onClick={() => {
+              console.log("quantity -", quantity);
+              if (quantity > 1) {
+                updateProductQuantity(quantity - 1);
+              }
+            }}
+          >
+            -
+          </button>
           <button className="cart__item__quantity cart__item__quantity__amount">
             {quantity}
           </button>
-          <button className="cart__item__quantity__btn">+</button>
+          <button
+            onClick={() => {
+              console.log("quantity +", quantity);
+              if (quantity < 100) {
+                updateProductQuantity(quantity + 1);
+              }
+            }}
+            className="cart__item__quantity__btn"
+          >
+            +
+          </button>
         </div>
         <FontAwesomeIcon
           icon={faTimes}

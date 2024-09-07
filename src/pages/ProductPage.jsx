@@ -22,7 +22,7 @@ const ProductPage = ({ setProductsInCart }) => {
         // update product quantity if already in cart
         if (productInCart.product.id === selectedProduct.id) {
           productAlreadyInCart = true;
-          return { product: productInCart, quantity };
+          return { ...productInCart, quantity };
         }
         return productInCart;
       });

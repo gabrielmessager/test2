@@ -22,6 +22,19 @@ const Cart = ({ cartOpen, setCartOpen, setProductsInCart }) => {
     setProductsInCart(updatedProductsInCart);
   }
 
+  function updateProductQuantity(productId, quantity) {
+    console.log("productId", productId);
+    console.log("quantity", quantity);
+
+    const updatedProductsInCart = productsInCart.map((productInCart) => {
+      if (productInCart.product.id === productId) {
+        return { ...productInCart, quantity };
+      }
+      return productInCart;
+    });
+    setProductsInCart(updatedProductsInCart);
+  }
+
   return (
     <div className={`cart__wrapper ${cartOpen && "cart-open"}`}>
       <nav className="cart">
@@ -44,6 +57,9 @@ const Cart = ({ cartOpen, setCartOpen, setProductsInCart }) => {
                 price={productInCart.product.price}
                 quantity={productInCart.quantity}
                 removeProduct={() => removeProduct(productInCart.product.id)}
+                updateProductQuantity={(quantity) =>
+                  updateProductQuantity(productInCart.product.id, quantity)
+                }
               />
             );
           })}
